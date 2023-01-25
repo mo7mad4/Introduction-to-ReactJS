@@ -1,0 +1,13 @@
+button{
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: rgb(98, 98, 98);
+}
+
+.active{
+    background-color: aquamarine;
+}

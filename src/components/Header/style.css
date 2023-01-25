@@ -10,3 +10,13 @@ ul{
     display: flex;
     gap: 20px;
 }
+
+ul li a {
+    text-decoration: none;
+    color:black;
+    font-size: 1.5em;
+}
+
+.active{
+    border-bottom: 2px solid black;
+}

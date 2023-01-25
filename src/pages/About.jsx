@@ -5,7 +5,7 @@ class AboutPage extends Component {
     render() {
         return (
             <div className='container'>
-                <Header />
+                <Header myPage="about"/>
                 <h2>About Page</h2>
                 <Footer />
             </div>
