@@ -1,6 +1,7 @@
-import './App.css'
-// import AboutPage from './pages/About';
-import HomePage from './pages/Home';
+import "./App.css";
+// import AboutPage from "./pages/About";
+import HomePage from "./pages/Home";
+
 function App() {
   return (
     <div className="App">
