@@ -12,17 +12,23 @@ class HomePage extends Component {
         return (
             <>
                 <Header myPage="home" />
-                <Container>
-                    <h2>Home Page</h2>
+                <h2>Home Page</h2>
+                <Container className="my-container">
                     <section>
                         <h4>Section 1</h4>
                         <Button title="Click me" isActive />
                     </section>
+                </Container>
+
+                <Container>
                     <section>
                         <h4>Section 2</h4>
                         <Button title="Add new product" />
                         <Button />
                     </section>
+                </Container>
+
+                <Container>
                     <section>
                         <h4>Section 3</h4>
 
@@ -30,7 +36,7 @@ class HomePage extends Component {
                             title="Card 1 - Empty-cart"
                             img={img1}
                             body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur velit eveniet sit modi vel placeat unde, est
-                             sunt consequatur asperiores error nihil incidunt odio ut dolore numquam. Quis, saepe ipsum."
+                            sunt consequatur asperiores error nihil incidunt odio ut dolore numquam. Quis, saepe ipsum."
                         />
                         <Card
                             title="Card 2 - Profile"
@@ -45,6 +51,9 @@ class HomePage extends Component {
                              sunt consequatur asperiores error nihil incidunt odio ut dolore numquam. Quis, saepe ipsum."
                         />
                     </section>
+                </Container>
+
+                <Container>
                     <section>
                         {/* Children we use open and close tag " <Card> </Card> " and we use in Component Card put in props Children  */}
                         <h4>Section 4</h4>
@@ -59,8 +68,8 @@ class HomePage extends Component {
                             <Button title="Button" />
                         </Card>
                     </section>
-                    <Footer />
                 </Container>
+                <Footer />
             </>
         );
     }
