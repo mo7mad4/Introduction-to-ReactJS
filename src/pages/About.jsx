@@ -7,9 +7,9 @@ import Header from '../components/Header/Header';
 // import * as Typography from '../components/Typography';
 // import { H2, H3 } from '../components/Typography'
 class AboutPage extends Component {
-    state = {
-        isMounted: true,
-    }
+    // state = {
+    //     isMounted: true,
+    // }
     render() {
         return (
             <>
