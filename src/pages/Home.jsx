@@ -1,7 +1,5 @@
 import { Component } from 'react';
 import Button from '../components/Button';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
 import Card from "../components/Card/Card";
 import img1 from "../images/empty-cart.png";
 import img2 from "../images/profile.png";
@@ -11,7 +9,6 @@ class HomePage extends Component {
     render() {
         return (
             <>
-                <Header myPage="home" />
                 <h2>Home Page</h2>
                 <Container className="my-container">
                     <section>
@@ -69,7 +66,6 @@ class HomePage extends Component {
                         </Card>
                     </section>
                 </Container>
-                <Footer />
             </>
         );
     }
