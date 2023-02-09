@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as yup from 'yup';
+import Container from '../components/Container';
 
 const RegulerExpression = /^(?=.*[0-9])([a-z]{6,16})$/;
 const initailData = {
@@ -25,7 +26,6 @@ let schema = yup.object().shape({
         .required(),
     isChecked: yup.boolean().oneOf([true]).required()
 });
-// console.log(schema)
 
 export default class Form extends Component {
 
@@ -61,7 +61,6 @@ export default class Form extends Component {
                 ))
 
             }).catch(e => console.log(e.errors))
-        // console.log(this.state)
     }
     handleRandomValue = (e) => {
         this.setState((prevState) => ({
@@ -71,18 +70,6 @@ export default class Form extends Component {
             rePassword: prevState.myData.rePassword
         }))
     }
-    // handleChangeName = (e) => {
-    //     console.log("Name Change", e.target.value)
-    //     this.setState({ name: e.target.value })
-    // }
-    // handleChangeEmail = (e) => {
-    //     console.log("Email Change")
-    //     this.setState({ email: e.target.value })
-    // }
-    // handleChangePassword = (e) => {
-    //     console.log("Password Change")
-    //     this.setState({ password: e.target.value })
-    // }
 
     handelChangeInput = (e) => {
         const { value, id } = e.target;
@@ -91,7 +78,9 @@ export default class Form extends Component {
     }
     render() {
         return (
-            <form onSubmit={(e) => this.handleSubmit(e)}>
+            <Container>
+
+            <form onSubmit={(e) => this.handleSubmit(e)} className="form">
                 <div>
                     <label htmlFor="name">Name</label>
                     <input type="text" id='name' placeholder='Enter your name' onChange={this.handelChangeInput} value={this.state.name} required />
@@ -113,6 +102,7 @@ export default class Form extends Component {
                 <button type='submit'>Submit</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
                 <button type='button' onClick={this.handleRandomValue}>RandomValue</button>
             </form>
+            </Container>
         )
     }
 }
