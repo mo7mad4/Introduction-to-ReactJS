@@ -1,11 +1,12 @@
 import React from "react";
 import { H1, H2, Body } from '../components/Typography'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../components/Container";
 import { posts } from "../mock/posts";
 
 const Post = () => {
     const { id } = useParams();
+    const navigate = useNavigate()
     const myData = posts.find((item) => item.id === +id)//Type 1 find => found object from array => return just single object
     // const myData = data.find((item) => item.id === Number(id))//Type 2 find => found object from array => return just single object
     // const myData = data.find((item) => String(item.id) === id)//Type 3 find => found object from array => return just single object
@@ -19,6 +20,7 @@ const Post = () => {
             {/* <H1>Post Number{myData?.id}</H1>
             <H2>{myData?.title}</H2>
             <Body>{ myData?.body }</Body> */}
+            <button onClick={()=>{navigate("/posts")}}>Go to All posts</button>
             
         </Container>
     );

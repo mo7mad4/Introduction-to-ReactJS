@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Navigate } from 'react-router';
 import * as yup from 'yup';
 import Container from '../components/Container';
 
@@ -35,10 +36,14 @@ export default class Form extends Component {
         email: "",
         password: "",
         rePassword: "",
-        myData: initailData
+        myData: initailData,
+        isLoggingIn: false
     }
     handleSubmit = (e) => {
         e.preventDefault()
+        // if (this.state.name === "Mohammed") {
+        //     this.setState({ isLoggingIn: true })
+        // }
         schema.validate({
             name: this.state.name,
             email: this.state.email,
@@ -59,7 +64,7 @@ export default class Form extends Component {
                         ...defaultt
                     }
                 ))
-
+                this.setState({isLoggingIn : true})
             }).catch(e => console.log(e.errors))
     }
     handleRandomValue = (e) => {
@@ -80,28 +85,29 @@ export default class Form extends Component {
         return (
             <Container>
 
-            <form onSubmit={(e) => this.handleSubmit(e)} className="form">
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id='name' placeholder='Enter your name' onChange={this.handelChangeInput} value={this.state.name} required />
-                </div>
+                <form onSubmit={(e) => this.handleSubmit(e)} className="form">
+                    <div>
+                        <label htmlFor="name">Name</label>
+                        <input type="text" id='name' placeholder='Enter your name' onChange={this.handelChangeInput} value={this.state.name} required />
+                    </div>
 
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id='email' placeholder='Enter your Email' onChange={this.handelChangeInput} value={this.state.email} required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id='password' placeholder='Enter your Password' onChange={this.handelChangeInput} value={this.state.password} required />
-                </div>
-                <div>
-                    <label htmlFor="Re-password">Re-password</label>
-                    <input type="Re-password" id='Re-password' placeholder='Agine enter your Password' onChange={this.handelChangeInput} value={this.state.password} required />
-                </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id='email' placeholder='Enter your Email' onChange={this.handelChangeInput} value={this.state.email} required />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id='password' placeholder='Enter your Password' onChange={this.handelChangeInput} value={this.state.password} required />
+                    </div>
+                    <div>
+                        <label htmlFor="Re-password">Re-password</label>
+                        <input type="password" id='Re-password' placeholder='Agine enter your Password' onChange={this.handelChangeInput} value={this.state.password} required />
+                    </div>
 
-                <button type='submit'>Submit</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
-                <button type='button' onClick={this.handleRandomValue}>RandomValue</button>
-            </form>
+                    <button type='submit'>Submit</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
+                    <button type='button' onClick={this.handleRandomValue}>RandomValue</button>
+                    {this.state.isLoggingIn ? <Navigate to="/" /> : ""}
+                </form>
             </Container>
         )
     }

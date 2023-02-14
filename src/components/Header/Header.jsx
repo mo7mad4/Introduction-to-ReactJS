@@ -10,8 +10,8 @@ const Header = (props) => {
                 {/* <li className={props.myPage === "home" && "active"}>
                     <a href="/#">Home</a>
                 </li> */}
-                <li >
-                    <Link to="/">Home</Link>
+                <li>
+                    <Link to="/" >Home</Link>
                 </li>
                 <li>
                     <Link to="/about">About</Link>
