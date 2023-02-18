@@ -106,6 +106,7 @@ export default class Form extends Component {
 
                     <button type='submit'>Submit</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
                     <button type='button' onClick={this.handleRandomValue}>RandomValue</button>
+                    {/* اتحولني على مكان آخر return بمجرد م هيا موجودة في  Navigate */}
                     {this.state.isLoggingIn ? <Navigate to="/" /> : ""}
                 </form>
             </Container>

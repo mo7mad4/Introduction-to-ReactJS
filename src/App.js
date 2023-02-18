@@ -7,6 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { posts } from "./mock/posts";
+import Todos from "./pages/Todos";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/todos" element={<Todos />} />
         <Route
           path="/Posts"
           element={

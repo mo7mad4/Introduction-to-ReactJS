@@ -1,0 +1,7 @@
+.cardListItem {
+    padding: 5px;
+    background-color: #abc;
+    border: 1px solid #123;
+    color: "black";
+    gap: 5 ;
+}

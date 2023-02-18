@@ -25,6 +25,9 @@ const Header = (props) => {
                 <li >
                     <Link to="/posts">Posts</Link>
                 </li>
+                <li >
+                    <Link to="/todos">Todos</Link>
+                </li>
             </ul>
         </header>
     )
