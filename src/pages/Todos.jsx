@@ -39,31 +39,38 @@ class Todos extends Component {
 
     }
     state = {
-        data : [],
+        data: [],
+        isLoading: false
     }
     componentDidMount() {
+        this.setState({ isLoading: true })
         fetch('https://jsonplaceholder.typicode.com/todos')
             .then(response => response.json())
-            .then((json) => this.setState({data :json})) // this.setState() => state داخل  apiبخزن الي جاي من 
+            .then((json) => this.setState({ data: json })) // this.setState() => state داخل  apiبخزن الي جاي من 
+            .catch((e) => console.log(e.message))
+            .finally(() => this.setState({ isLoading: false }))
     }
     render() {
         return (
-            <div>
-                <ul style={{overflow:"auto"}}>
-                    {this.state.data.map((todo, index) => (
-            <ListItem todo={todo} key={todo.title} />
-            // <div key={todo.id}>{todo.title}</div>
-          ))}
 
-                    {/* {data.map((item) => (
+            <div>
+                {this.state.isLoading ? "Loading ..." :
+                    <ul style={{ overflow: "auto" }}>
+                        {this.state.data.map((todo) => (
+                            <ListItem todo={todo} key={todo.title} />
+                            // <div key={todo.id}>{todo.title}</div>
+                        ))}
+
+                        {/* {data.map((item) => (
                         <div key={item}>{item}</div>
                     ))} */}
 
-                    {/* <li>
+                        {/* <li>
             <span>user id: {this.obj.userId}</span> | <span>id: {this.obj.id}</span> | <span>title: {this.obj.title}</span> |{' '}
             <span>{this.obj.completed ? 'completed' : 'not completed'}</span>
-          </li> */}
-                </ul>
+        </li> */}
+                    </ul>
+                }
             </div>
         );
     }
