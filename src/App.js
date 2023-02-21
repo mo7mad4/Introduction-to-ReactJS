@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { posts } from "./mock/posts";
 import Todos from "./pages/Todos";
+import Login from "./pages/Login";
 import  {TodoDetalis}  from "./pages/TodoDetalis";
 
 
@@ -56,6 +57,7 @@ function App() {
             </ul>
           } />  
         <Route path="/posts/:id" element={<Post />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<h1>Page not Found</h1>} />
       </Routes>
       <Footer />
