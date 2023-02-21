@@ -49,7 +49,7 @@ function App() {
           element={
             <ul>
               {posts.map((item) => (
-              <li>
+              <li key={item}>
                   <Link to={`/posts/${item.id}` } >Post {item.id}</Link>
               </li>
               ))}

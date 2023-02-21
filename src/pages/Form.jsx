@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react'
 import { Navigate } from 'react-router';
 import * as yup from 'yup';
@@ -32,6 +33,7 @@ export default class Form extends Component {
 
 
     state = {
+        username: "",
         name: "",
         email: "",
         password: "",
@@ -39,8 +41,32 @@ export default class Form extends Component {
         myData: initailData,
         isLoggingIn: false
     }
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
+        const getData = {
+            // username: "Mohammed",
+            // name: "Zeyad",
+            // email: "mohammedreda814@gmail.com"
+            username: this.state.username,
+            name: this.state.name,
+            email: this.state.email
+
+        }
+        this.setState({ isLoading: true })
+        try {
+
+            const res = await axios.post("https://jsonplaceholder.typicode.com/users/", getData) // in axios post i have 3 parameters the first paramenter ApiUrl , secned parameter body => Data , and the thired paramter we have header
+            if (res) {
+                this.setState({ isLoggingIn: true })
+            }
+            console.log(res)
+            this.setState({ isLoading: false })
+        } catch (error) {
+            console.log(error)
+            this.setState({ message: error.message })
+        }
+        this.setState({ isLoading: false })
+
         // if (this.state.name === "Mohammed") {
         //     this.setState({ isLoggingIn: true })
         // }
@@ -64,9 +90,12 @@ export default class Form extends Component {
                         ...defaultt
                     }
                 ))
-                this.setState({isLoggingIn : true})
+                this.setState({ isLoggingIn: true })
             }).catch(e => console.log(e.errors))
     }
+    // handleSubmitTwo = async () => {
+
+    // }
     handleRandomValue = (e) => {
         this.setState((prevState) => ({
             name: prevState.myData.name,
@@ -86,6 +115,9 @@ export default class Form extends Component {
             <Container>
 
                 <form onSubmit={(e) => this.handleSubmit(e)} className="form">
+                    {/* <form onSubmit={(e) => this.handleSubmitTwo(e)} className="form"> */}
+                    <div>{this.state.error}</div>{/*display error here*/}
+
                     <div>
                         <label htmlFor="name">Name</label>
                         <input type="text" id='name' placeholder='Enter your name' onChange={this.handelChangeInput} value={this.state.name} required />
@@ -104,7 +136,7 @@ export default class Form extends Component {
                         <input type="password" id='Re-password' placeholder='Agine enter your Password' onChange={this.handelChangeInput} value={this.state.password} required />
                     </div>
 
-                    <button type='submit'>Submit</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
+                    <button type='submit'>{this.state.isLoggingIn ? "Loading..." : "Submit"}</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
                     <button type='button' onClick={this.handleRandomValue}>RandomValue</button>
                     {/* اتحولني على مكان آخر return بمجرد م هيا موجودة في  Navigate */}
                     {this.state.isLoggingIn ? <Navigate to="/" /> : ""}

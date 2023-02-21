@@ -25,7 +25,7 @@ class TodoDetalisComponent extends Component {
       .then(response => response.json())
       // .then((json) => console.log(json))
       .then((json) => this.setState({ data: json }))
-    .catch((e)=>console.log(e.message)) 
+      .catch((e) => console.log(e.message))
       .finally(() => this.setState({ isLoading: false }))
   }
   render() {

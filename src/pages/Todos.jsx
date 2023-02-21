@@ -1,6 +1,7 @@
 import { Component } from "react";
 // import { json } from "react-router-dom";
 import ListItem from "../components/ListItem";
+import axios from "axios";
 // const myData = [
 //     {
 //         userId: 1,
@@ -42,20 +43,45 @@ class Todos extends Component {
         data: [],
         isLoading: false
     }
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({ isLoading: true })
-        fetch('https://jsonplaceholder.typicode.com/todos')
-            .then(response => response.json())
-            .then((json) => this.setState({ data: json })) // this.setState() => state داخل  apiبخزن الي جاي من 
-            .catch((e) => console.log(e.message))
-            .finally(() => this.setState({ isLoading: false }))
+       
+        // fetch('https://jsonplaceholder.typicode.com/todos')
+        //     .then(response => response.json())
+        //     .then((json) => this.setState({ data: json })) // this.setState() => state داخل  apiبخزن الي جاي من 
+        //     .catch((e) => console.log(e.message))
+        //     .finally(() => this.setState({ isLoading: false }))
+
+        //-------------------------------------------------------------------------
+
+        // axios.get('https://jsonplaceholder.typicode.com/todos')
+        //     // console.log(response.data)
+        //     // .then((response) => this.setState({ data: response.data }))
+        //     .then(({data}) => this.setState({ data }))
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
+        //     .finally(() => {
+        //         this.setState({ isLoading: false })
+        //     });
+        
+        //-------------------------------------------------------------------------
+        
+        try {
+            const { data } = await axios.get('https://jsonplaceholder.typicode.com/todos')
+            this.setState({ data, isLoading: false })
+        } catch (error) {
+            console.log(error)
+        }
+        
+  
     }
     render() {
         return (
 
             <div>
                 {this.state.isLoading ? "Loading ..." :
-                    <ul style={{ overflow: "auto" }}>
+                    <ul style={{ overflowX: "auto" }}>
                         {this.state.data.map((todo) => (
                             <ListItem todo={todo} key={todo.title} />
                             // <div key={todo.id}>{todo.title}</div>
