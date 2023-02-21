@@ -7,6 +7,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { posts } from "./mock/posts";
+import Todos from "./pages/Todos";
+import  {TodoDetalis}  from "./pages/TodoDetalis";
 
 
 function App() {
@@ -40,12 +42,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/todos" element={<Todos />} />
+        <Route path="/todos/:id" element={<TodoDetalis />} />
         <Route
           path="/Posts"
           element={
             <ul>
               {posts.map((item) => (
-              <li>
+              <li key={item}>
                   <Link to={`/posts/${item.id}` } >Post {item.id}</Link>
               </li>
               ))}
