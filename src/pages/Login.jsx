@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import { Navigate } from 'react-router';
+// import { Navigate } from 'react-router';
 import * as yup from 'yup';
 import Container from '../components/Container';
 
@@ -10,7 +10,7 @@ export default class Form extends Component {
     state = {
         email: "",
         password: "",
-        isLoggingIn: false,
+        // isLoggingIn: false,
         isLoading: false,
         error: [],
     }
@@ -25,16 +25,21 @@ export default class Form extends Component {
                 email: this.state.email,
                 password: this.state.password
             },
-            { abortEarly: false }) 
+            { abortEarly: false })
             .then(async ({ email, password }) => {
-                console.log(email, password)
+                // console.log(email, password)
 
                 const res = await axios.post('https://dummyjson.com/auth/login', {
                     username: email,
                     password
                 })
-                console.log(res)
-                if (res) this.setState({ isLoggingIn: true })
+                // if (res) this.setState({ isLoggingIn: true })
+                console.log(res.data.token)
+                if (res) {
+                    localStorage.setItem("token", res.data.token)
+                    localStorage.setItem("username", res.data.username)
+                    this.props.login();
+                }
             })
             .catch((error) => {
                 if (error.errors) {
@@ -77,7 +82,7 @@ export default class Form extends Component {
                     <div>{this.state.error.map(e => <span style={{ color: 'red' }}>{e}</span>)}</div>{/*display error here*/}
                     <button type='submit'>{this.state.isLoggingIn ? "Loading..." : "Submit"}</button> {/* طالما الزر ماخذ سبميت خلص بنستعدي الفنكشن في الفورم  */}
                     {/* اتحولني على مكان آخر return بمجرد م هيا موجودة في  Navigate */}
-                    {this.state.isLoggingIn ? <Navigate to="/" /> : ""}
+                    {/* {this.state.isLoggingIn ? <Navigate to="/" /> : ""} */}
                 </form>
             </Container>
         )
