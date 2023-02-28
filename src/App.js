@@ -13,6 +13,7 @@ import { TodoDetalis } from "./pages/TodoDetalis";
 import Info from "./pages/Info";
 import ProtectedRoute from "./components/Header/ProtectedRoute";
 import React from "react";
+import Anthor from "./pages/AnthorComponentsClass";
 
 // const isAuthorized = true;
 
@@ -95,6 +96,8 @@ class App extends React.Component {
           <Route path="/dashboard" element={<ProtectedRoute isAuthorized={this.state.isAuthorized} logout={this.logout} />}>
             <Route index element={<HomePage />} />
             <Route path="info" element={<Info />} />
+            <Route path="anthor" element={<Anthor />} />
+
           </Route>
 
 
