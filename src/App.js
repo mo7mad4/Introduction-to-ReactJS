@@ -14,6 +14,7 @@ import Info from "./pages/Info";
 import ProtectedRoute from "./components/Header/ProtectedRoute";
 import React from "react";
 import Anthor from "./pages/AnthorComponentsClass";
+import Ref from "./pages/Ref";
 
 // const isAuthorized = true;
 
@@ -97,6 +98,7 @@ class App extends React.Component {
             <Route index element={<HomePage />} />
             <Route path="info" element={<Info />} />
             <Route path="anthor" element={<Anthor />} />
+            <Route path="ref" element={<Ref />} />
 
           </Route>
 
@@ -118,6 +120,7 @@ class App extends React.Component {
 
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/info" element={<Info />} />
+          {/* <Route path="/info" element={<Ref />} /> */}
           <Route path="*" element={<h1>Page not Found</h1>} />
         </Routes>
         <Footer />
