@@ -34,12 +34,14 @@ export default class Form extends Component {
                     password
                 })
                 // if (res) this.setState({ isLoggingIn: true })
-                console.log(res.data.token)
+                console.log(res.data)
+                //if the user login => Get token and username for loaclStorge and put in my WebSite  
                 if (res) {
                     localStorage.setItem("token", res.data.token)
                     localStorage.setItem("username", res.data.username)
                     this.props.login();
                 }
+
             })
             .catch((error) => {
                 if (error.errors) {
@@ -65,7 +67,8 @@ export default class Form extends Component {
     handelChangeInput = (e) => {
         const { value, id } = e.target;
         // console.log(value, id)
-        this.setState({ [id]: value }) //[] idهاي بنحطها عشان يأخذ القيمة تعت ال
+        //this's [] get value id that's it 
+        this.setState({ [id]: value }) 
     }
     render() {
         return (

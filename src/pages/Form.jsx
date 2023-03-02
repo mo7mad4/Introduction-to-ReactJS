@@ -76,7 +76,8 @@ export default class Form extends Component {
             password: this.state.password,
             rePassword: this.state.rePassword
         },
-            { abortEarly: false }) //عشان م تاخد اول ايرور و توقف 
+        // Do not take the first error but take all errors and return {abortEarly}
+            { abortEarly: false }) 
             .then(() => {
                 console.log("Valid")
                 this.setState((prevState) => (
@@ -108,7 +109,7 @@ export default class Form extends Component {
     handelChangeInput = (e) => {
         const { value, id } = e.target;
         // console.log(value, id)
-        this.setState({ [id]: value }) //[] idهاي بنحطها عشان يأخذ القيمة تعت ال
+        this.setState({ [id]: value }) 
     }
     render() {
         return (

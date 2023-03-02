@@ -47,6 +47,12 @@ class Header extends React.Component {
                     <li >
                         <Link to="/dashboard/info">Info</Link>
                     </li>
+                    <li >
+                        <Link to="/dashboard/anthor">Anthor Components</Link>
+                    </li>
+                    <li >
+                        <Link to="/dashboard/ref">ref</Link>
+                    </li>
                 </ul>
             </header>
         )
