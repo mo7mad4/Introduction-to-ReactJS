@@ -13,6 +13,8 @@ class Ref extends React.Component {
         console.log(this['input' + id])
         this['input' + id].current.focus()
     };
+
+
     render() {
         // const divNode = this.divRef.current;
         // console.log(divNode)
