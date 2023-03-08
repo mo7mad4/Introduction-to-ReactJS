@@ -24,7 +24,7 @@ class Header extends React.Component {
                         <Link to="/" >Home</Link>
                     </li>
                     <li>
-                        <Link to="/todo" >Function Todos</Link>
+                        <Link to="functions/todo" >Function Todos</Link>
                     </li>
                     <li>
                         <Link to="/about">About</Link>
